@@ -1,7 +1,8 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 
 import { FiCheckSquare } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
+import api from '../../services/api';
 import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
@@ -37,7 +38,9 @@ const ModalAddFood: React.FC<IModalProps> = ({
 
   const handleSubmit = useCallback(
     async (data: ICreateFoodData) => {
-      // TODO ADD A NEW FOOD AND CLOSE THE MODAL
+      handleAddFood(data);
+
+      setIsOpen();
     },
     [handleAddFood, setIsOpen],
   );
